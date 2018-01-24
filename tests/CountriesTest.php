@@ -58,7 +58,7 @@ class CountriesTest extends TestCase
             }, 0);
         });
 
-        $results = collect($results)->sortBy(function ($country) {
+        $results = coollect($results)->sortBy(function ($country) {
             return $country[1];
         });
 
