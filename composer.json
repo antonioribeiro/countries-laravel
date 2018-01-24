@@ -1,0 +1,78 @@
+{
+    "name": "pragmarx/countries-laravel",
+
+    "description": "Laravel Countries",
+
+    "keywords": [
+        "laravel",
+        "countries",
+        "borders",
+        "cities",
+        "currencies",
+        "flag",
+        "geometry",
+        "states",
+        "taxes",
+        "timezones",
+        "topology"
+    ],
+
+    "license": "BSD-3-Clause",
+
+    "authors": [
+        {
+            "name": "Antonio Carlos Ribeiro",
+            "email": "acr@antoniocarlosribeiro.com",
+            "role": "Creator"
+        }
+    ],
+
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": ">=5.3",
+        "psr/simple-cache": "^1.0",
+        "pragmarx/coollection": ">=5.5",
+        "pragmarx/countries": "dev-master"
+    },
+
+    "require-dev": {
+        "orchestra/testbench": "~3.0",
+        "phpunit/phpunit": "~6.0",
+        "squizlabs/php_codesniffer": "^2.3",
+        "colinodell/json5": "^1.0",
+        "gasparesganga/php-shapefile": "^2.3"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "PragmaRX\\CountriesLaravel\\Package\\": "src/package"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "PragmaRX\\CountriesLaravel\\Tests\\": "tests/"
+        }
+    },
+
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src test",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src test"
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PragmaRX\\CountriesLaravel\\Package\\ServiceProvider"
+            ],
+            "aliases": {
+                "Countries": "PragmaRX\\CountriesLaravel\\Package\\Facade"
+            }
+        }
+    },
+
+    "minimum-stability": "dev",
+
+    "prefer-stable": true
+}
