@@ -9,7 +9,7 @@ return [
 
         'duration' => 180,
 
-        'directory' => storage_path('countries/cache'),
+        'directory' => sys_get_temp_dir().'/__PRAGMARX_COUNTRIES__/cache',
     ],
 
     'hydrate' => [
