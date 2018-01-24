@@ -8,6 +8,8 @@ return [
         'service' => PragmaRX\Countries\Package\Services\Cache::class,
 
         'duration' => 180,
+
+        'directory' => storage_path('countries/cache'),
     ],
 
     'hydrate' => [
@@ -49,4 +51,5 @@ return [
             'language_short'    => 'ISO639_3',
         ],
     ],
+
 ];
