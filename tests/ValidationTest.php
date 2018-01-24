@@ -2,8 +2,8 @@
 
 namespace PragmaRX\CountriesLaravel\Tests\Service;
 
-use PragmaRX\CountriesLaravel\Tests\TestCase;
 use Illuminate\Support\Facades\Validator;
+use PragmaRX\CountriesLaravel\Tests\TestCase;
 
 class ValidationTest extends TestCase
 {
