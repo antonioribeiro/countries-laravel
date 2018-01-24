@@ -17,8 +17,6 @@
     <a href="https://styleci.io/repos/74829244"><img alt="StyleCI" src="https://styleci.io/repos/74829244/shield"></a>
 </p>
 
-![Switzerland](docs/switzerland-geo.png)
-
 ### This package is a Laravel bridge 
 
 Please refer to the [main package repository](https://github.com/antonioribeiro/countries) for more information and docs.
