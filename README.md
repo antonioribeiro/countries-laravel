@@ -17,6 +17,24 @@
     <a href="https://styleci.io/repos/74829244"><img alt="StyleCI" src="https://styleci.io/repos/74829244/shield"></a>
 </p>
 
+### What does it gives you?
+
+This package has all sorts of information about countries:
+
+| info            | items |
+------------------|-------:|
+| taxes           | 32    |
+| geometry map    | 248   |
+| topology map    | 248   |
+| currencies      | 256   |
+| countries       | 266   |
+| timezones       | 423   |
+| borders         | 649   |
+| flags           | 1,570  |
+| states          | 4,526  |
+| cities          | 7,376  |
+| timezones times | 81,153 |
+
 ### This package is a Laravel bridge 
 
 Please refer to the [main package repository](https://github.com/antonioribeiro/countries) for more information and docs.
