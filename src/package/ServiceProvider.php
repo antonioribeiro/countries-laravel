@@ -3,13 +3,13 @@
 namespace PragmaRX\CountriesLaravel\Package;
 
 use Illuminate\Support\Facades\Validator;
-use PragmaRX\CountriesLaravel\Package\Facade as CountriesFacade;
-use PragmaRX\Countries\Package\Countries as CountriesService;
+use PragmaRX\Countries\Package\Data\Repository;
 use PragmaRX\Countries\Package\Services\Config;
 use PragmaRX\Countries\Package\Services\Helper;
 use PragmaRX\Countries\Package\Services\Hydrator;
+use PragmaRX\Countries\Package\Countries as CountriesService;
 use PragmaRX\CountriesLaravel\Package\Console\Commands\Update;
-use PragmaRX\Countries\Package\Data\Repository;
+use PragmaRX\CountriesLaravel\Package\Facade as CountriesFacade;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 
 class ServiceProvider extends IlluminateServiceProvider
@@ -55,7 +55,7 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     protected function getPackageConfigFile()
     {
-        return __DIR__ . '/../config/countries.php';
+        return __DIR__.'/../config/countries.php';
     }
 
     /**
