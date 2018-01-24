@@ -12,7 +12,7 @@
 </p>
 <p align="center">
     <a href="https://scrutinizer-yaml.com/g/antonioribeiro/countries-laravel/?branch=master"><img alt="Coverage" src="https://img.shields.io/scrutinizer/coverage/g/antonioribeiro/countries-laravel.svg?style=flat-square"></a>
-    <a href="https://travis-ci.org/antonioribeiro/countries-laravel"><img alt="PHP" src="https://img.shields.io/badge/PHP-7.0%20%7C%207.1%20%7C%207.2%20%7C%20nightly-green.svg?style=flat"></a>
+    <a href="https://travis-ci.org/antonioribeiro/countries-laravel"><img alt="PHP" src="https://img.shields.io/badge/PHP-7.0%20%7C%207.1%20%7C%207.2%20%7C%20nightly-brightgreen.svg?style=flat"></a>
     <a href="https://packagist.org/packages/pragmarx/countries-laravel"><img alt="Downloads" src="https://img.shields.io/packagist/dt/pragmarx/countries-laravel.svg?style=flat-square"></a>
     <a href="https://styleci.io/repos/118451602"><img alt="StyleCI" src="https://styleci.io/repos/118451602/shield"></a>
 </p>
