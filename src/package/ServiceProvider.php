@@ -3,12 +3,10 @@
 namespace PragmaRX\CountriesLaravel\Package;
 
 use Illuminate\Support\Facades\Validator;
-use PragmaRX\Coollection\Package\Coollection;
 use PragmaRX\CountriesLaravel\Package\Facade as CountriesFacade;
 use PragmaRX\Countries\Package\Countries as CountriesService;
 use PragmaRX\Countries\Package\Services\Config;
 use PragmaRX\Countries\Package\Services\Helper;
-use PragmaRX\Countries\Update\Updater;
 use PragmaRX\Countries\Package\Services\Hydrator;
 use PragmaRX\CountriesLaravel\Package\Console\Commands\Update;
 use PragmaRX\Countries\Package\Data\Repository;
@@ -48,24 +46,6 @@ class ServiceProvider extends IlluminateServiceProvider
         $this->publishes([
             __COUNTRIES_DIR__.$this->helper->toDir('/src/config/countries.php') => config_path('countries.php'),
         ], 'config');
-    }
-
-    /**
-     * Create the collection hydrator macro.
-     */
-    private function createCollectionHydrator()
-    {
-        Coollection::macro('hydrate', function ($elements) {
-            return Countries::hydrate($this, $elements);
-        });
-
-        foreach (Hydrator::HYDRATORS as $hydrator) {
-            $hydrator = 'hydrate'.studly_case($hydrator);
-
-            Coollection::macro($hydrator, function () use ($hydrator) {
-                return Countries::getRepository()->getHydrator()->{$hydrator}($this);
-            });
-        }
     }
 
     /**
@@ -121,8 +101,6 @@ class ServiceProvider extends IlluminateServiceProvider
         $this->registerService();
 
         $this->registerUpdateCommand();
-
-        $this->createCollectionHydrator();
     }
 
     /**
