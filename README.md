@@ -60,6 +60,24 @@ The package is based on Laravel Collections, so you basically have access to all
 $france = Countries::where('name.common', 'France');
 ```
 
+## Flag routes
+
+You can refer directly to an SVG flag by linking 
+
+```
+/pragmarx/countries/flag/download/<cca3-code>.svg
+/pragmarx/countries/flag/file/<cca3-code>.svg
+```
+
+Examples:
+
+```
+https://laravel.com/pragmarx/countries/flag/download/usa.svg
+https://laravel.com/pragmarx/countries/flag/file/usa.svg
+```
+
+http://pragmarx.test/pragmarx/countries/flag/file/usa.svg
+
 ## Author
 
 [Antonio Carlos Ribeiro](http://twitter.com/iantonioribeiro)

@@ -2,6 +2,7 @@
 
 namespace PragmaRX\CountriesLaravel\Package;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use PragmaRX\Countries\Package\Data\Repository;
 use PragmaRX\Countries\Package\Services\Config;
@@ -94,6 +95,30 @@ class ServiceProvider extends IlluminateServiceProvider
         $this->registerService();
 
         $this->registerUpdateCommand();
+
+        $this->registerRoutes();
+    }
+
+    /**
+     * Register routes.
+     */
+    protected function registerRoutes()
+    {
+        Route::get(
+            '/pragmarx/countries/flag/file/{cca3}.svg',
+            [
+                'name' => 'pragmarx.countries.flag.file',
+                'uses' => '\PragmaRX\CountriesLaravel\Package\Http\Controllers\Flag@file',
+            ]
+        );
+
+        Route::get(
+            '/pragmarx/countries/flag/download/{cca3}.svg',
+            [
+                'name' => 'pragmarx.countries.flag.download',
+                'uses' => '\PragmaRX\CountriesLaravel\Package\Http\Controllers\Flag@download',
+            ]
+        );
     }
 
     /**
@@ -117,7 +142,7 @@ class ServiceProvider extends IlluminateServiceProvider
     /**
      * Add validators.
      */
-    private function addValidators()
+    protected function addValidators()
     {
         foreach (config('countries.validation.rules') as $ruleName => $countryAttribute) {
             if (is_int($ruleName)) {
@@ -133,7 +158,7 @@ class ServiceProvider extends IlluminateServiceProvider
     /**
      * Register update command.
      */
-    private function registerUpdateCommand()
+    protected function registerUpdateCommand()
     {
         $this->app->singleton($command = 'countries.update.command', function () {
             return new Update();
