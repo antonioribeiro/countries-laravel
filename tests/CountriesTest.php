@@ -39,7 +39,7 @@ class CountriesTest extends TestCase
 
             $results['currencies'] = $results['currencies'] + $country->hydrate('currencies')->currencies->count();
 
-            $results['flags'] = $results['flags'] + $country->hydrate('flag')->flag->count();
+            $results['flags'] = $results['flags'] + dd($country->hydrate('flag'))->flag->count();
 
             $results['states'] = $results['states'] + $country->hydrate('states')->states->count();
 
@@ -70,7 +70,7 @@ class CountriesTest extends TestCase
             'countries' => 266,
             'timezones' => 423,
             'borders' => 649,
-            'flags' => 1570,
+            'flags' => 1836,
             'states' => 4526,
             'cities' => 7376,
             'timezones times' => 81153,
