@@ -39,7 +39,7 @@ class CountriesTest extends TestCase
 
             $results['currencies'] = $results['currencies'] + $country->hydrate('currencies')->currencies->count();
 
-            $results['flags'] = $results['flags'] + dd($country->hydrate('flag'))->flag->count();
+            $results['flags'] = $results['flags'] + $country->hydrate('flag')->flag->count();
 
             $results['states'] = $results['states'] + $country->hydrate('states')->states->count();
 
