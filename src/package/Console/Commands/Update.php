@@ -4,6 +4,9 @@ namespace PragmaRX\CountriesLaravel\Package\Console\Commands;
 
 use PragmaRX\CountriesLaravel\Package\Update\Updater;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Update extends Base
 {
     /**

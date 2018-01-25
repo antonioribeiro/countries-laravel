@@ -76,4 +76,19 @@ class CountriesTest extends TestCase
             'timezones times' => 81153,
         ]);
     }
+
+    public function testRoutes()
+    {
+        $crawler = $this->call('GET', 'pragmarx/countries/flag/file/usa.svg');
+
+        $this->assertEquals(false, $crawler->getContent());
+
+        $crawler = $this->call('GET', 'pragmarx/countries/flag/download/usa.svg');
+
+        $this->assertEquals(false, $crawler->getContent());
+
+        $crawler = $this->call('GET', 'pragmarx/countries/flag/file/xxx.svg');
+
+        $this->assertStringStartsWith('<!DOCTYPE', $crawler->getContent());
+    }
 }
