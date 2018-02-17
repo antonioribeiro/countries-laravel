@@ -52,6 +52,13 @@ Use Composer to install it:
 composer require pragmarx/countries-laravel
 ```
 
+## Publishing assets
+
+You can publish configuration by doing:
+```
+php artisan vendor:publish --provider=PragmaRX\\Countries\\ServiceProvider
+```
+
 ## Usage
 
 The package is based on Laravel Collections, so you basically have access to all methods in Collections, like
