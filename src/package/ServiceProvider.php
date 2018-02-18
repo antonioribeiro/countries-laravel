@@ -5,6 +5,7 @@ namespace PragmaRX\CountriesLaravel\Package;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use PragmaRX\Countries\Package\Data\Repository;
+use PragmaRX\Countries\Package\Services\Cache;
 use PragmaRX\Countries\Package\Services\Config;
 use PragmaRX\Countries\Package\Services\Helper;
 use PragmaRX\Countries\Package\Services\Hydrator;
@@ -22,22 +23,7 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     protected $app;
 
-    /**
-     * @var \PragmaRX\CountriesLaravel\Package\Support\Helper
-     */
-    protected $helper;
-
-    /**
-     * Create a new service provider instance.
-     *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
-     */
-    public function __construct($app)
-    {
-        parent::__construct($app);
-
-        $this->helper = new Helper(new Config());
-    }
+    protected $defer = true;
 
     /**
      * Configure package paths.
@@ -126,16 +112,18 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     protected function registerService()
     {
-        $this->app->singleton('pragmarx.countries.cache', $cache = app(config('countries.cache.service')));
+        $this->app->singleton('pragmarx.countries', function () {
+            $hydrator = new Hydrator($config = new Config(config()));
 
-        $this->app->singleton('pragmarx.countries', function () use ($cache) {
-            $hydrator = new Hydrator($config = new Config());
+            $cache = new Cache($config, app(config('countries.cache.service')));
 
-            $repository = new Repository($cache, $hydrator, $this->helper, $config);
+            $helper = new Helper($config);
+
+            $repository = new Repository($cache, $hydrator, $helper, $config);
 
             $hydrator->setRepository($repository);
 
-            return new CountriesService($config, $cache, $this->helper, $hydrator, $repository);
+            return new CountriesService($config, $cache, $helper, $hydrator, $repository);
         });
     }
 
@@ -165,5 +153,18 @@ class ServiceProvider extends IlluminateServiceProvider
         });
 
         $this->commands($command);
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [
+            'pragmarx.countries',
+            'countries.update.command'
+        ];
     }
 }
