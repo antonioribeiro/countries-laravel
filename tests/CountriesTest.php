@@ -4,18 +4,34 @@ namespace PragmaRX\CountriesLaravel\Tests\Service;
 
 use PragmaRX\CountriesLaravel\Tests\TestCase;
 use PragmaRX\CountriesLaravel\Package\Facade as Countries;
+use SebastianBergmann\Timer\Timer;
 
 class CountriesTest extends TestCase
 {
     public function testCountriesIsInstantiable()
     {
-        $brazil = Countries::where('name.common', 'Brazil')->first();
+        $country = Countries::where('name.common', 'Brazil')->first();
 
-        $this->assertEquals($brazil->name->common, 'Brazil');
+        $this->assertEquals($country->name->common, 'Brazil');
+    }
+
+    public function testCountryHydration()
+    {
+        $country = Countries::where('name.common', 'Italy')->first()->hydrateBorders();
+
+        $this->assertEquals($country->name->common, 'Italy');
+
+        $this->assertEquals(6, $country->borders->count());
+
+        $this->assertEquals('Austria', $country->borders->first()->name->common);
     }
 
     public function testCountEverything()
     {
+        config(['countries.cache.enabled' => false]);
+
+        ini_set('memory_limit', '2048M');
+
         $results = [
             'countries'       => 0,
             'borders'         => 0,
@@ -66,7 +82,7 @@ class CountriesTest extends TestCase
             'taxes' => 32,
             'geometry map' => 248,
             'topology map' => 248,
-            'currencies' => 256,
+            'currencies' => 267,
             'countries' => 266,
             'timezones' => 423,
             'borders' => 649,
