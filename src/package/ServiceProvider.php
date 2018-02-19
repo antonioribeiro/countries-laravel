@@ -4,8 +4,8 @@ namespace PragmaRX\CountriesLaravel\Package;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
-use PragmaRX\Countries\Package\Data\Repository;
 use PragmaRX\Countries\Package\Services\Cache;
+use PragmaRX\Countries\Package\Data\Repository;
 use PragmaRX\Countries\Package\Services\Config;
 use PragmaRX\Countries\Package\Services\Helper;
 use PragmaRX\Countries\Package\Services\Hydrator;
@@ -164,7 +164,7 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         return [
             'pragmarx.countries',
-            'countries.update.command'
+            'countries.update.command',
         ];
     }
 }

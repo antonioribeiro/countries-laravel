@@ -4,7 +4,6 @@ namespace PragmaRX\CountriesLaravel\Tests\Service;
 
 use PragmaRX\CountriesLaravel\Tests\TestCase;
 use PragmaRX\CountriesLaravel\Package\Facade as Countries;
-use SebastianBergmann\Timer\Timer;
 
 class CountriesTest extends TestCase
 {
