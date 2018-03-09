@@ -35,9 +35,60 @@ This package has all sorts of information about countries:
 | cities          | 7,376  |
 | timezones times | 81,153 |
 
-### This package is a Laravel bridge 
+### Validation
 
-Please refer to the [main package repository](https://github.com/antonioribeiro/countries) for more information and docs.
+The validation is extending Laravel's validation, so you can use it like any other validation rules, like
+
+```php
+/**
+ * Store a new blog post.
+ *
+ * @param  Request  $request
+ * @return Response
+ */
+public function store(Request $request)
+{
+    $this->validate($request, [
+        'title' => 'required|unique:posts|max:255',
+        'body' => 'required',
+        'country' => 'country' //Checks if valid name.common
+    ]);
+
+    // The blog post is valid, store in database...
+}
+```
+
+Which validation rules there is and what there name should be, can all be configured in the configuration file.
+
+```php
+'validation' => [
+    'rules' => [
+	    'countryCommon' => 'name.common'
+	]
+]
+```
+
+By changing the configuration like this, we can now access the property `name.common`, by the validation rule `countryCommon`
+
+You have to define all the validations rules in settings, only a few is defined by default, the default is
+
+```php
+'rules' 	=> [
+    'country' 			=> 'name.common',
+    'cca2',
+    'cca2',
+    'cca3',
+    'ccn3',
+    'cioc',
+    'currencies'			=> 'ISO4217',
+    'language',
+    'language_short'	=> 'ISO639_3',
+]
+```
+
+### Documentation
+
+This package is a Laravel bridge, please refer to the [main package repository](https://github.com/antonioribeiro/countries) for more information and docs.
 
 ## Requirements
 
@@ -61,7 +112,7 @@ php artisan vendor:publish --provider=PragmaRX\\Countries\\ServiceProvider
 
 ## Usage
 
-The package is based on Laravel Collections, so you basically have access to all methods in Collections, like
+After installing you'll have access to the Countries Façade, and the package is based on Laravel Collections, so you basically have access to all methods in Collections, like
 
 ```php
 $france = Countries::where('name.common', 'France');
