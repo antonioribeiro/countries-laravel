@@ -107,7 +107,7 @@ composer require pragmarx/countries-laravel
 
 You can publish configuration by doing:
 ```
-php artisan vendor:publish --provider=PragmaRX\\Countries\\ServiceProvider
+php artisan vendor:publish --provider=PragmaRX\\CountriesLaravel\\Package\\ServiceProvider
 ```
 
 ## Usage
