@@ -5,7 +5,7 @@ return [
     'cache' => [
         'enabled' => true,
 
-        'service' => 'cache',
+        'service' => PragmaRX\Countries\Package\Services\Cache\Service::class,
 
         'duration' => 180,
 
