@@ -78,17 +78,17 @@ class CountriesTest extends TestCase
         });
 
         $this->assertEquals($results->toArray(), [
-            'taxes' => 32,
-            'geometry map' => 248,
-            'topology map' => 248,
-            'currencies' => 267,
-            'countries' => 266,
-            'timezones' => 423,
+            'taxes' => 33,
+            'geometry map' => 250,
+            'topology map' => 250,
+            'currencies' => 268,
+            'countries' => 267,
+            'timezones' => 424,
             'borders' => 649,
-            'flags' => 1836,
+            'flags' => 1842,
             'states' => 4526,
-            'cities' => 7376,
-            'timezones times' => 81153,
+            'cities' => 7393,
+            'timezones times' => 81164,
         ]);
     }
 
