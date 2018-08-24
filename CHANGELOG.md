@@ -4,9 +4,11 @@
 ### Changed
 - Please check countries package changelog
 ### Breaking Change
-If you are using this package caching system, you have to change in your config file:
+If you are using this package caching system, you have to Updated cache.services in the contries.php configuration file. Ensure to update your configuration the below before updating:
 ```
-'service' => PragmaRX\Countries\Package\Services\Cache\Service::class,
+'cache' => [
+  'service' =>  PragmaRX\Countries\Package\Services\Cache\Service::class,
+]
 ```
 
 ## 0.1.0 - 2018-01-22
