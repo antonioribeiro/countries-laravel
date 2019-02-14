@@ -76,7 +76,6 @@ You have to define all the validations rules in settings, only a few is defined 
 'rules' 	=> [
     'country' 			=> 'name.common',
     'cca2',
-    'cca2',
     'cca3',
     'ccn3',
     'cioc',
