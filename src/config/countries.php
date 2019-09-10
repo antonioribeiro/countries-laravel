@@ -43,7 +43,6 @@ return [
             'name'              => 'name.common',
             'nameCommon'        => 'name.common',
             'cca2',
-            'cca2',
             'cca3',
             'ccn3',
             'cioc',
