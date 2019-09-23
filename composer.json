@@ -32,7 +32,7 @@
         "laravel/framework": ">=5.3",
         "psr/simple-cache": "^1.0",
         "pragmarx/coollection": ">=0.6",
-        "pragmarx/countries": "^0.5.8"
+        "pragmarx/countries": "^0.6.0"
     },
 
     "require-dev": {
