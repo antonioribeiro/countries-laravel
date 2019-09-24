@@ -2,6 +2,7 @@
 
 namespace PragmaRX\CountriesLaravel\Package\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Routing\Controller;
 use PragmaRX\CountriesLaravel\Package\Facade as CountriesFacade;
 
@@ -15,7 +16,7 @@ class Flag extends Controller
      */
     private function findCountryByCca3($cca3)
     {
-        if (is_null($country = CountriesFacade::where('cca3', upper($cca3)))) {
+        if (is_null($country = CountriesFacade::where('cca3', Str::upper($cca3)))) {
             abort(404);
         }
 
