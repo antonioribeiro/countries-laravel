@@ -25,6 +25,21 @@ class CountriesTest extends TestCase
         $this->assertEquals('Austria', $country->borders->first()->name->common);
     }
 
+    public function testRoutes()
+    {
+        $crawler = $this->call('GET', 'pragmarx/countries/flag/file/usa.svg');
+
+        $this->assertEquals(false, $crawler->getContent());
+
+        $crawler = $this->call('GET', 'pragmarx/countries/flag/download/usa.svg');
+
+        $this->assertEquals(false, $crawler->getContent());
+
+        $crawler = $this->call('GET', 'pragmarx/countries/flag/file/xxx.svg');
+
+        $this->assertStringStartsWith('<!DOCTYPE', $crawler->getContent());
+    }
+
     public function testCountEverything()
     {
         config(['countries.cache.enabled' => false]);
@@ -69,8 +84,8 @@ class CountriesTest extends TestCase
             $country = $country->hydrate(['timezones', 'timezones_times']);
 
             $results['timezones times'] = $results['timezones times'] + $country->timezones->reduce(function ($carry, $timezone) {
-                return $timezone->times->count();
-            }, 0);
+                    return $timezone->times->count();
+                }, 0);
         });
 
         $results = coollect($results)->sortBy(function ($country) {
@@ -81,29 +96,14 @@ class CountriesTest extends TestCase
             'taxes' => 33,
             'geometry map' => 250,
             'topology map' => 250,
-            'currencies' => 268,
+            'currencies' => 267,
             'countries' => 267,
-            'timezones' => 424,
+            'timezones' => 425,
             'borders' => 649,
             'flags' => 1842,
             'states' => 4526,
             'cities' => 7393,
-            'timezones times' => 81164,
+            'timezones times' => 79594,
         ]);
-    }
-
-    public function testRoutes()
-    {
-        $crawler = $this->call('GET', 'pragmarx/countries/flag/file/usa.svg');
-
-        $this->assertEquals(false, $crawler->getContent());
-
-        $crawler = $this->call('GET', 'pragmarx/countries/flag/download/usa.svg');
-
-        $this->assertEquals(false, $crawler->getContent());
-
-        $crawler = $this->call('GET', 'pragmarx/countries/flag/file/xxx.svg');
-
-        $this->assertStringStartsWith('<!DOCTYPE', $crawler->getContent());
     }
 }
