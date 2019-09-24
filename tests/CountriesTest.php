@@ -84,8 +84,8 @@ class CountriesTest extends TestCase
             $country = $country->hydrate(['timezones', 'timezones_times']);
 
             $results['timezones times'] = $results['timezones times'] + $country->timezones->reduce(function ($carry, $timezone) {
-                    return $timezone->times->count();
-                }, 0);
+                return $timezone->times->count();
+            }, 0);
         });
 
         $results = coollect($results)->sortBy(function ($country) {
