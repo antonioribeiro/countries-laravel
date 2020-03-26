@@ -2,8 +2,8 @@
 
 namespace PragmaRX\CountriesLaravel\Tests\Service;
 
-use PragmaRX\CountriesLaravel\Tests\TestCase;
 use PragmaRX\CountriesLaravel\Package\Facade as Countries;
+use PragmaRX\CountriesLaravel\Tests\TestCase;
 
 class CountriesTest extends TestCase
 {

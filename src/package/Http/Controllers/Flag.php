@@ -2,8 +2,8 @@
 
 namespace PragmaRX\CountriesLaravel\Package\Http\Controllers;
 
-use Illuminate\Support\Str;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
 use PragmaRX\CountriesLaravel\Package\Facade as CountriesFacade;
 
 class Flag extends Controller
