@@ -4,15 +4,15 @@ namespace PragmaRX\CountriesLaravel\Package;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
+use PragmaRX\Countries\Package\Countries as CountriesService;
 use PragmaRX\Countries\Package\Data\Repository;
+use PragmaRX\Countries\Package\Services\Cache\Service as Cache;
 use PragmaRX\Countries\Package\Services\Config;
 use PragmaRX\Countries\Package\Services\Helper;
 use PragmaRX\Countries\Package\Services\Hydrator;
-use PragmaRX\Countries\Package\Countries as CountriesService;
 use PragmaRX\CountriesLaravel\Package\Console\Commands\Update;
-use PragmaRX\Countries\Package\Services\Cache\Service as Cache;
 use PragmaRX\CountriesLaravel\Package\Facade as CountriesFacade;
-use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 
 class ServiceProvider extends IlluminateServiceProvider
 {
