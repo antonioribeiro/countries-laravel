@@ -135,6 +135,14 @@ https://laravel.com/pragmarx/countries/flag/file/usa.svg
 
 http://pragmarx.test/pragmarx/countries/flag/file/usa.svg
 
+These routes can be turned off in the configuration file:
+
+```php
+'routes' => [
+    'enabled' => false,
+]
+```
+
 ## Author
 
 [Antonio Carlos Ribeiro](http://twitter.com/iantonioribeiro)

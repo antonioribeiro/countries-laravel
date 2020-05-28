@@ -82,7 +82,9 @@ class ServiceProvider extends IlluminateServiceProvider
 
         $this->registerUpdateCommand();
 
-        $this->registerRoutes();
+        if (config('countries.routes.enabled')) {
+            $this->registerRoutes();
+        }
     }
 
     /**

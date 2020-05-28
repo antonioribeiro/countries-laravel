@@ -36,6 +36,10 @@ return [
         'currencies' => 'currency',
     ],
 
+    'routes' => [
+        'enabled' => true,
+    ],
+
     'validation' => [
         'enabled' => true,
         'rules' => [
