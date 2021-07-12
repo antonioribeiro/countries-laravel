@@ -64,7 +64,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "PragmaRX\\CountriesLaravel\\Package\\ServiceProvider"
+                "PragmaRX\\CountriesLaravel\\Package\\ServiceProvider",
+                "PragmaRX\\CountriesLaravel\\Package\\ValidationServiceProvider"
             ],
             "aliases": {
                 "Countries": "PragmaRX\\CountriesLaravel\\Package\\Facade"

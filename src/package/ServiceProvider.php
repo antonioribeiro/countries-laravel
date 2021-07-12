@@ -3,7 +3,6 @@
 namespace PragmaRX\CountriesLaravel\Package;
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use PragmaRX\Countries\Package\Countries as CountriesService;
 use PragmaRX\Countries\Package\Data\Repository;
@@ -12,7 +11,6 @@ use PragmaRX\Countries\Package\Services\Config;
 use PragmaRX\Countries\Package\Services\Helper;
 use PragmaRX\Countries\Package\Services\Hydrator;
 use PragmaRX\CountriesLaravel\Package\Console\Commands\Update;
-use PragmaRX\CountriesLaravel\Package\Facade as CountriesFacade;
 
 class ServiceProvider extends IlluminateServiceProvider
 {
@@ -62,9 +60,7 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     public function boot()
     {
-        if (config('countries.validation.enabled')) {
-            $this->addValidators();
-        }
+        //
     }
 
     /**
@@ -127,22 +123,6 @@ class ServiceProvider extends IlluminateServiceProvider
 
             return new CountriesService($config, $cache, $helper, $hydrator, $repository);
         });
-    }
-
-    /**
-     * Add validators.
-     */
-    protected function addValidators()
-    {
-        foreach (config('countries.validation.rules') as $ruleName => $countryAttribute) {
-            if (is_int($ruleName)) {
-                $ruleName = $countryAttribute;
-            }
-
-            Validator::extend($ruleName, function ($attribute, $value) use ($countryAttribute) {
-                return ! CountriesFacade::where($countryAttribute, $value)->isEmpty();
-            }, 'The :attribute must be a valid '.$ruleName.'.');
-        }
     }
 
     /**
